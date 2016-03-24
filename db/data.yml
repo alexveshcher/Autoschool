@@ -1,0 +1,32 @@
+
+---
+groups:
+  columns:
+  - id
+  - starttime
+  records: 
+  - - 1
+    - 2016-03-30
+
+---
+students:
+  columns:
+  - id
+  - lastname
+  - firstname
+  - fathersname
+  - born
+  - reg_date
+  - phone
+  - category
+  - group_id
+  records: 
+  - - 1
+    - Bina
+    - Ihor
+    - Petrovych
+    - 1993-03-24
+    - 2016-03-09
+    - 0634891842
+    - C
+    - 
