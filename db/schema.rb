@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20160324164740) do
 
   create_table "groups", force: :cascade do |t|
     t.date "starttime", null: false
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.integer "id_vehicle",    limit: 4, null: false
   end
 
+  add_index "instructorvehicle", ["id_instructor"], name: "instructorvehicle_ibfk_1", using: :btree
   add_index "instructorvehicle", ["id_vehicle"], name: "instructorvehicle_ibfk_2", using: :btree
 
   create_table "lection", force: :cascade do |t|
