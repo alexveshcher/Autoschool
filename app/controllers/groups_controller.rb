@@ -3,6 +3,10 @@ class GroupsController < ApplicationController
 
   def index
     @groups = Group.all
+    respond_to do |format|
+      format.html
+      format.xlsx {render 'groups/download'}
+    end
   end
 
   def show

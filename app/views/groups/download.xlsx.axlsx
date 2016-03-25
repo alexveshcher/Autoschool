@@ -1,0 +1,6 @@
+wb = xlsx_package.workbook
+wb.add_worksheet(name: "Groups") do |sheet|
+  @groups.each do |group|
+    sheet.add_row [group.id, group.starttime]
+  end
+end

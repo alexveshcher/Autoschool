@@ -26,6 +26,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 #for importing data from DB
 gem 'yaml_db'
 
+#for xlsx exporting
+gem 'axlsx_rails'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
