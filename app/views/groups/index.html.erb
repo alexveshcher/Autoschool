@@ -1,0 +1,18 @@
+<h1>Group List</h1>
+<table>
+  <thead>
+    <th>id</th>
+    <th>Start Time</th>
+  </thead>
+  <tbody>
+  <% @groups.each do |group|%>
+      <tr>
+        <td><%= group.id %></td>
+        <td><%= group.starttime %></td>
+        <td><%= link_to 'Show', group %></td>
+      </tr>
+  <% end %>
+  </tbody>
+
+</table>
+
