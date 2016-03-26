@@ -2,7 +2,7 @@ class GroupsController < ApplicationController
   before_action :set_group, only: [:show, :edit, :update, :destroy]
 
   def index
-    @groups = Group.all
+    @groups = Group.get_all
   end
 
   def show
@@ -52,7 +52,7 @@ class GroupsController < ApplicationController
 
   private
     def set_group
-      @group = Group.find(params[:id])
+      @group = Group.get_by_id(params[:id])
     end
 
     def group_params
