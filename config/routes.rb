@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :groups
   resources :students
   resources :workers
+  resources :lectors
 
   root 'groups#index'
   # The priority is based upon order of creation: first created -> highest priority.
