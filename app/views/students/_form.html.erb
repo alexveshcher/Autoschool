@@ -1,26 +1,57 @@
-<%= form_for(@student) do |f| %>
-  <% if @student.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@student.errors.count, "error") %> prohibited this student from being saved:</h2>
+<div class="content">
+  <%= form_for(@student) do |f| %>
+      <% if @student.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@student.errors.count, "error") %> prohibited this group from being saved:</h2>
 
-      <ul>
-      <% @student.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+            <ul>
+              <% @student.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
       <% end %>
-      </ul>
-    </div>
+      <div class="form-group">
+        <label>group_id:</label>
+        <%= f.text_field :group_id, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <label>lastname:</label>
+        <%= f.text_field :lastname, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <label>firstname:</label>
+        <%= f.text_field :firstname, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <label>lastname:</label>
+        <%= f.text_field :fathersname, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <label>born:</label>
+        <%= f.date_select :born, default: Date.today.years_ago(17), start_year: Date.today.year - 100, end_year: Date.today.year - 16, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <label>reg_date:</label>
+        <%= f.date_select :reg_date, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <label>phone:</label>
+        <%= f.text_field :phone, class: 'form-control', placeholder: '097XXXXXXX' %>
+      </div>
+
+      <div class="form-group">
+        <label>category:</label>
+        <%= f.text_field :category, class: 'form-control' %>
+      </div>
+
+        <%= f.submit class: "btn btn-primary" %>
+
   <% end %>
-
-  <div class="field">
-    <%= f.label :group_id, "group_id" %>
-    <%= f.date_select :born, placeholder: "born" %><br>
-    <%= f.text_field :lastname,placeholder: "lastname"%>
-    <%= f.text_field :firstname,placeholder: "firstname"%>
-  </div>
-
-  <div class="actions">
-    <%= f.submit class:  "btn-success" %>
-  </div>
-<% end %>
+</div>
 
 

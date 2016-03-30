@@ -2,18 +2,51 @@
 
 <p>
   <strong>id:</strong>
-  <%= @group.id %>
+  <%= @student.id %>
 </p>
 
 <p>
-  <strong>starttime:</strong>
-  <%= @group.starttime %>
+  <strong>group_id:</strong>
+  <%= @student.group_id %>
 </p>
 
+<p>
+  <strong>lastname:</strong>
+  <%= @student.lastname %>
+</p>
 
+<p>
+  <strong>firstname:</strong>
+  <%= @student.firstname %>
+</p>
 
-<%= link_to 'Edit', edit_group_path(@group) %> |
-<%= link_to 'Back', groups_path %>
+<p>
+  <strong>fathersname:</strong>
+  <%= @student.fathersname %>
+</p>
+
+<p>
+  <strong>born:</strong>
+  <%= @student.born %>
+</p>
+
+<p>
+  <strong>reg_date:</strong>
+  <%= @student.reg_date %>
+</p>
+
+<p>
+  <strong>phone:</strong>
+  <%= @student.phone%>
+</p>
+
+<p>
+  <strong>category:</strong>
+  <%= @student.category %>
+</p>
+
+<%= link_to 'Edit', edit_student_path(@student) %> |
+<%= link_to 'Back', students_path %>
 
 
 
