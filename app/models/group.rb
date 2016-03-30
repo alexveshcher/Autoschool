@@ -9,6 +9,4 @@ class Group < ActiveRecord::Base
     self.find_by_sql("SELECT * FROM groups WHERE id = #{id}").first
   end
 
-
-
 end

@@ -1,0 +1,29 @@
+<h1>Worker List</h1>
+<%= link_to 'New', new_worker_path %>
+<table class="table table-hover">
+  <thead>
+    <th>id</th>
+    <th>lastname</th>
+    <th>firstname</th>
+    <th>patronymic</th>
+    <th>phone</th>
+    <th>born</th>
+  </thead>
+  <tbody>
+  <% @workers.each do |worker|%>
+      <tr>
+        <td><%= worker.id %></td>
+        <td><%= worker.lastname %></td>
+        <td><%= worker.firstname %></td>
+        <td><%= worker.patronymic %></td>
+        <td><%= worker.phone %></td>
+        <td><%= worker.born %></td>
+        <td><%= link_to 'Show', worker %></td>
+        <td><%= link_to 'Edit', edit_worker_path(worker) %></td>
+        <td><%= link_to 'Destroy', worker, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+      </tr>
+  <% end %>
+  </tbody>
+
+</table>
+

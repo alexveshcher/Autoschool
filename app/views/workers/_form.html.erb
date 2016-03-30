@@ -1,0 +1,49 @@
+<div class="content">
+  <%= form_for(@worker) do |f| %>
+      <% if @worker.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@worker.errors.count, "error") %> prohibited this group from being saved:</h2>
+
+            <ul>
+              <% @worker.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+      <% end %>
+      <div class="form-group">
+        <label>lastname:</label>
+        <%= f.text_field :lastname, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <label>firstname:</label>
+        <%= f.text_field :firstname, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <label>patronymic:</label>
+        <%= f.text_field :patronymic, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <label>phone:</label>
+        <%= f.text_field :phone, class: 'form-control', placeholder: '097XXXXXXX' %>
+      </div>
+
+      <div class="form-group">
+        <label>born:</label>
+        <%= f.date_select :born,
+                          default: Date.today.years_ago(30),
+                          start_year: Date.today.year - 100,
+                          end_year: Date.today.year - 16,
+                          class: 'form-control' %>
+      </div>
+
+
+      <%= f.submit class: "btn btn-primary" %>
+
+  <% end %>
+</div>
+
+
