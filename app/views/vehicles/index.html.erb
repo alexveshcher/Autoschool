@@ -1,0 +1,25 @@
+<h1>Vehicle List</h1>
+<%= link_to 'New', new_vehicle_path %>
+<table class="table table-hover">
+  <thead>
+    <th>id</th>
+    <th>vehicle_num</th>
+    <th>model</th>
+    <th>category</th>
+  </thead>
+  <tbody>
+  <% @vehicles.each do |vehicle|%>
+      <tr>
+        <td><%= vehicle.id %></td>
+        <td><%= vehicle.vehicle_num %></td>
+        <td><%= vehicle.model %></td>
+        <td><%= vehicle.category %></td>
+        <td><%= link_to 'Show', vehicle %></td>
+        <td><%= link_to 'Edit', edit_vehicle_path(vehicle) %></td>
+        <td><%= link_to 'Destroy', vehicle, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+      </tr>
+  <% end %>
+  </tbody>
+
+</table>
+
