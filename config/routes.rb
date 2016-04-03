@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :vehicles
   resources :lections
   resources :instructors
+  resources :trainings
 
   root 'groups#index'
   # The priority is based upon order of creation: first created -> highest priority.
