@@ -1,0 +1,22 @@
+<h1>Lector List</h1>
+<%= link_to 'New', new_instructor_path %>
+<table class="table table-hover">
+  <thead>
+    <th>id</th>
+    <th>teaches_since</th>
+  </thead>
+  <tbody>
+  <% @instructors.each do |instructor|%>
+      <tr>
+        <td><%= instructor.id %></td>
+        <td><%= instructor.drives_since %></td>
+        <td><%= instructor.worker.lastname%></td>
+        <td><%= link_to 'Show', instructor %></td>
+        <td><%= link_to 'Edit', edit_instructor_path(instructor) %></td>
+        <td><%= link_to 'Destroy', instructor, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+      </tr>
+  <% end %>
+  </tbody>
+
+</table>
+
