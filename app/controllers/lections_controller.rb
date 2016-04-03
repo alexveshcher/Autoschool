@@ -56,6 +56,6 @@ class LectionsController < ApplicationController
   end
 
   def lection_params
-    params.require(:lection).permit(:lector_id, :group_id, :lection_time, :lection_num)
+    params.require(:lection).permit(:lector_id, :group_id, :lection_time, :lection_num, :theme)
   end
 end

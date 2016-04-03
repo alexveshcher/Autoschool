@@ -59,7 +59,7 @@ CREATE TABLE instructorvehicle
   CONSTRAINT instructorvehicle_ibfk_1 FOREIGN KEY (id_instructor) REFERENCES instructors (id),
   CONSTRAINT instructorvehicle_ibfk_2 FOREIGN KEY (id_vehicle) REFERENCES vehicles (id)
 );
-CREATE TABLE lection
+CREATE TABLE lections
 (
   id           INT(10) UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
   lection_time TIMESTAMP                                   NOT NULL,

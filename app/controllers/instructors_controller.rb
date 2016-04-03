@@ -65,7 +65,7 @@ class InstructorsController < ApplicationController
 
 
   def instructor_params
-    params.require(:instructor).permit(:drives_since, :licence_num)
+    params.require(:instructor).permit(:licence_expires, :licence_num)
   end
   def worker_params
     params.require(:worker).permit(:lastname, :firstname, :patronymic, :phone, :born)
