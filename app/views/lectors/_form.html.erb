@@ -11,7 +11,40 @@
             </ul>
           </div>
       <% end %>
-      <%= f.collection_select :id, Worker.all,:id,:lastname, include_blank: true %>
+
+
+
+      <%= fields_for(@worker) do |f| %>
+          <div class="form-group">
+            <label>lastname:</label>
+            <%= f.text_field :lastname, class: 'form-control' %>
+          </div>
+
+          <div class="form-group">
+            <label>firstname:</label>
+            <%= f.text_field :firstname, class: 'form-control' %>
+          </div>
+
+          <div class="form-group">
+            <label>patronymic:</label>
+            <%= f.text_field :patronymic, class: 'form-control' %>
+          </div>
+
+          <div class="form-group">
+            <label>phone:</label>
+            <%= f.text_field :phone, class: 'form-control', placeholder: '097XXXXXXX' %>
+          </div>
+
+          <div class="form-group">
+            <label>born:</label>
+            <%= f.date_select :born,
+                              default: Date.today.years_ago(30),
+                              start_year: Date.today.year - 100,
+                              end_year: Date.today.year - 16,
+                              class: 'form-control' %>
+          </div>
+
+      <% end %>
 
       <div class="form-group">
         <label>teaches_since:</label>

@@ -10,6 +10,7 @@
       <tr>
         <td><%= lector.id %></td>
         <td><%= lector.teaches_since %></td>
+        <td><%= lector.worker.lastname%></td>
         <td><%= link_to 'Show', lector %></td>
         <td><%= link_to 'Edit', edit_lector_path(lector) %></td>
         <td><%= link_to 'Destroy', lector, method: :delete, data: {confirm: 'Are you sure?'} %></td>
