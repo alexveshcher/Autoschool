@@ -4,7 +4,7 @@ CREATE TABLE workers
   lastname   VARCHAR(25)                                 NOT NULL,
   firstname  VARCHAR(25)                                 NOT NULL,
   patronymic VARCHAR(25)                                 NOT NULL,
-  phone      VARCHAR(10)                                 NOT NULL,
+  phone      VARCHAR(14)                                 NOT NULL,
   born       DATE                                        NOT NULL
 );
 CREATE TABLE lectors
@@ -15,9 +15,9 @@ CREATE TABLE lectors
 );
 CREATE TABLE instructors
 (
-  id           INT(10) UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
-  licence_expires DATE                                     NOT NULL,
-  licence_num  VARCHAR(10)                                 NOT NULL,
+  id              INT(10) UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  licence_expires DATE                                        NOT NULL,
+  licence_num     VARCHAR(10)                                 NOT NULL,
   CONSTRAINT instructors_ibfk_1 FOREIGN KEY (id) REFERENCES workers (id)
 );
 
@@ -28,17 +28,17 @@ CREATE TABLE groups
 );
 CREATE TABLE students
 (
-  id          INT(10) UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
-  lastname    VARCHAR(25)                                 NOT NULL,
-  firstname   VARCHAR(25)                                 NOT NULL,
-  patronymic  VARCHAR(25)                                 NOT NULL,
-  born        DATE                                        NOT NULL,
-  reg_date    DATE                                        NOT NULL,
-  phone       VARCHAR(10)                                 NOT NULL,
-  category    VARCHAR(3)                                  NOT NULL,
-  group_id    INT(10) UNSIGNED,
+  id            INT(10) UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  lastname      VARCHAR(25)                                 NOT NULL,
+  firstname     VARCHAR(25)                                 NOT NULL,
+  patronymic    VARCHAR(25)                                 NOT NULL,
+  born          DATE                                        NOT NULL,
+  reg_date      DATE                                        NOT NULL,
+  phone         VARCHAR(10)                                 NOT NULL,
+  category      VARCHAR(3)                                  NOT NULL,
+  group_id      INT(10) UNSIGNED,
   passed_school BIT(1),
-  passed_mreo BIT(1),
+  passed_mreo   BIT(1),
   CONSTRAINT group_id___fk FOREIGN KEY (group_id) REFERENCES groups (id)
 );
 
