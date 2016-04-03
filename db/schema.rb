@@ -11,15 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160324164740) do
+ActiveRecord::Schema.define(version: 0) do
 
   create_table "groups", force: :cascade do |t|
     t.date "starttime", null: false
   end
 
   create_table "instructors", force: :cascade do |t|
-    t.date   "drives_since",            null: false
-    t.string "licence_num",  limit: 10, null: false
+    t.date   "licence_expires",            null: false
+    t.string "licence_num",     limit: 10, null: false
   end
 
   create_table "instructorvehicle", id: false, force: :cascade do |t|
@@ -27,12 +27,11 @@ ActiveRecord::Schema.define(version: 20160324164740) do
     t.integer "id_vehicle",    limit: 4, null: false
   end
 
-  add_index "instructorvehicle", ["id_instructor"], name: "instructorvehicle_ibfk_1", using: :btree
   add_index "instructorvehicle", ["id_vehicle"], name: "instructorvehicle_ibfk_2", using: :btree
 
   create_table "lection", force: :cascade do |t|
-    t.datetime "lection_time",           null: false
-    t.integer  "lection_num",  limit: 4, null: false
+    t.datetime "lection_time",            null: false
+    t.string   "theme",        limit: 40, null: false
     t.integer  "lector_id",    limit: 4
     t.integer  "group_id",     limit: 4
   end
@@ -41,18 +40,20 @@ ActiveRecord::Schema.define(version: 20160324164740) do
   add_index "lection", ["lector_id"], name: "lection_ibfk_1", using: :btree
 
   create_table "lectors", force: :cascade do |t|
-    t.date "teaches_since", null: false
+    t.integer "teaches_since", limit: 4, null: false
   end
 
   create_table "students", force: :cascade do |t|
-    t.string  "lastname",    limit: 25, null: false
-    t.string  "firstname",   limit: 25, null: false
-    t.string  "fathersname", limit: 25, null: false
-    t.date    "born",                   null: false
-    t.date    "reg_date",               null: false
-    t.string  "phone",       limit: 10, null: false
-    t.string  "category",    limit: 3,  null: false
-    t.integer "group_id",    limit: 4
+    t.string  "lastname",      limit: 25, null: false
+    t.string  "firstname",     limit: 25, null: false
+    t.string  "patronymic",    limit: 25, null: false
+    t.date    "born",                     null: false
+    t.date    "reg_date",                 null: false
+    t.string  "phone",         limit: 10, null: false
+    t.string  "category",      limit: 3,  null: false
+    t.integer "group_id",      limit: 4
+    t.binary  "passed_school", limit: 1
+    t.binary  "passed_mreo",   limit: 1
   end
 
   add_index "students", ["group_id"], name: "group_id___fk", using: :btree
@@ -80,11 +81,11 @@ ActiveRecord::Schema.define(version: 20160324164740) do
   add_index "vehicles", ["vehicle_num"], name: "vehicle_num", unique: true, using: :btree
 
   create_table "workers", force: :cascade do |t|
-    t.string  "lastname",   limit: 25, null: false
-    t.string  "firstname",  limit: 25, null: false
-    t.string  "patronymic", limit: 25, null: false
-    t.integer "phone",      limit: 4,  null: false
-    t.date    "born",                  null: false
+    t.string "lastname",   limit: 25, null: false
+    t.string "firstname",  limit: 25, null: false
+    t.string "patronymic", limit: 25, null: false
+    t.string "phone",      limit: 14, null: false
+    t.date   "born",                  null: false
   end
 
   add_foreign_key "instructors", "workers", column: "id", name: "instructors_ibfk_1"
