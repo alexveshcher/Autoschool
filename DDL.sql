@@ -4,19 +4,19 @@ CREATE TABLE workers
   lastname   VARCHAR(25)                                 NOT NULL,
   firstname  VARCHAR(25)                                 NOT NULL,
   patronymic VARCHAR(25)                                 NOT NULL,
-  phone      INT(11)                                     NOT NULL,
+  phone      VARCHAR(10)                                 NOT NULL,
   born       DATE                                        NOT NULL
 );
 CREATE TABLE lectors
 (
   id            INT(10) UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
-  teaches_since DATE                                        NOT NULL,
+  teaches_since YEAR(4)                                     NOT NULL,
   CONSTRAINT lectrors_ibfk_1 FOREIGN KEY (id) REFERENCES workers (id)
 );
 CREATE TABLE instructors
 (
   id           INT(10) UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
-  drives_since DATE                                        NOT NULL,
+  licence_expires DATE                                     NOT NULL,
   licence_num  VARCHAR(10)                                 NOT NULL,
   CONSTRAINT instructors_ibfk_1 FOREIGN KEY (id) REFERENCES workers (id)
 );
@@ -31,12 +31,14 @@ CREATE TABLE students
   id          INT(10) UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
   lastname    VARCHAR(25)                                 NOT NULL,
   firstname   VARCHAR(25)                                 NOT NULL,
-  fathersname VARCHAR(25)                                 NOT NULL,
+  patronymic  VARCHAR(25)                                 NOT NULL,
   born        DATE                                        NOT NULL,
   reg_date    DATE                                        NOT NULL,
   phone       VARCHAR(10)                                 NOT NULL,
   category    VARCHAR(3)                                  NOT NULL,
   group_id    INT(10) UNSIGNED,
+  passed_school BIT(1),
+  passed_mreo BIT(1),
   CONSTRAINT group_id___fk FOREIGN KEY (group_id) REFERENCES groups (id)
 );
 
@@ -61,7 +63,7 @@ CREATE TABLE lection
 (
   id           INT(10) UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
   lection_time TIMESTAMP                                   NOT NULL,
-  lection_num  INT(2) UNSIGNED                             NOT NULL,
+  theme        VARCHAR(40)                                 NOT NULL,
   lector_id    INT(10) UNSIGNED,
   group_id     INT(10) UNSIGNED,
   CONSTRAINT lection_ibfk_1 FOREIGN KEY (lector_id) REFERENCES lectors (id),
