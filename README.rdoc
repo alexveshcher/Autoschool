@@ -32,3 +32,6 @@ git reset --soft HEAD^
 git stash
 git checkout branch_name (e.g. git checkout master) branch_name - branch you want to commit
 git stash apply
+
+4. Adding non-foreign-key drop-down lists
+http://stackoverflow.com/a/1958868

@@ -1,7 +1,5 @@
 class Student < ActiveRecord::Base
 
-  validates :category, inclusion: { in: %w(A B C),
-                                    message: 'no such category'}
   validates :phone, length: { is: 10 }
   validates :firstname, :lastname, :fathersname, format: { with: /\A[a-zA-Z]+\z/,
                                                            message: 'only allows letters' }
@@ -14,7 +12,5 @@ class Student < ActiveRecord::Base
   def self.get_by_id(id)
     self.find_by_sql("SELECT * FROM students WHERE id = #{id}").first
   end
-
-
 
 end

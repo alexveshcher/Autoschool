@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :workers
   resources :lectors
   resources :vehicles
+  resources :lections
 
   root 'groups#index'
   # The priority is based upon order of creation: first created -> highest priority.

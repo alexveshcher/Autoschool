@@ -51,6 +51,6 @@ class LectorsController < ApplicationController
   end
 
   def lector_params
-    params.require(:lector).permit(:lastname, :firstname, :patronymic, :phone, :born)
+    params.require(:lector).permit(:id, :teaches_since)
   end
 end

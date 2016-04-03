@@ -1,17 +1,16 @@
 <div class="content">
-  <%= form_for(@lector) do |f| %>
-      <% if @lector.errors.any? %>
+  <%= form_for(@lection) do |f| %>
+      <% if @lection.errors.any? %>
           <div id="error_explanation">
-            <h2><%= pluralize(@lector.errors.count, "error") %> prohibited this group from being saved:</h2>
+            <h2><%= pluralize(@lection.errors.count, "error") %> prohibited this group from being saved:</h2>
 
             <ul>
-              <% @lector.errors.full_messages.each do |message| %>
+              <% @lection.errors.full_messages.each do |message| %>
                   <li><%= message %></li>
               <% end %>
             </ul>
           </div>
       <% end %>
-      <%= f.collection_select :id, Worker.all,:id,:lastname, include_blank: true %>
 
       <div class="form-group">
         <label>teaches_since:</label>

@@ -13,7 +13,7 @@
       <% end %>
       <div class="form-group">
         <label>group_id:</label>
-        <%= f.text_field :group_id, class: 'form-control' %>
+        <%= f.collection_select :group_id, Group.all,:id,:id, include_blank: true %>
       </div>
       <div class="form-group">
         <label>lastname:</label>
@@ -26,7 +26,7 @@
       </div>
 
       <div class="form-group">
-        <label>lastname:</label>
+        <label>fathersname:</label>
         <%= f.text_field :fathersname, class: 'form-control' %>
       </div>
       <div class="form-group">
@@ -35,7 +35,7 @@
       </div>
 
       <div class="form-group">
-        <label>reg_date:</label>
+        <label>reg_date:(MAYBE USER SHOULDN'T SET IT)</label>
         <%= f.date_select :reg_date, class: 'form-control' %>
       </div>
 
@@ -46,7 +46,9 @@
 
       <div class="form-group">
         <label>category:</label>
-        <%= f.text_field :category, class: 'form-control' %>
+        <%= f.collection_select :category, Vehicle::CATEGORIES, :to_s, :to_s,
+                                include_blank: false
+        %>
       </div>
 
         <%= f.submit class: "btn btn-primary" %>

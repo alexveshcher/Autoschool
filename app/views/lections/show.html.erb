@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>id:</strong>
+  <%= @lection.id %>
+</p>
+
+
+<p>
+  <strong>lector_id:</strong>
+  <%= @lection.lector_id %>
+</p>
+
+<p>
+  <strong>group_id:</strong>
+  <%= @lection.group_id %>
+</p>
+
+<p>
+  <strong>lection_time:</strong>
+  <%= @lection.lection_time %>
+</p>
+
+<p>
+  <strong>lection_num:</strong>
+  <%= @lection.lection_num %>
+</p>
+
+<%= link_to 'Edit', edit_lection_path(@lection) %> |
+<%= link_to 'Back', lections_path %>
+
+
+
