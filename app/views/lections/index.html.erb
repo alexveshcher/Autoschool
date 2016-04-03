@@ -1,18 +1,21 @@
-<h1>Lector List</h1>
-<%= link_to 'New', new_lector_path %>
+<h1>Lection List</h1>
+<%= link_to 'New', new_lection_path %>
 <table class="table table-hover">
   <thead>
     <th>id</th>
     <th>teaches_since</th>
   </thead>
   <tbody>
-  <% @lectors.each do |lector|%>
+  <% @lections.each do |lection|%>
       <tr>
-        <td><%= lector.id %></td>
-        <td><%= lector.teaches_since %></td>
-        <td><%= link_to 'Show', lector %></td>
-        <td><%= link_to 'Edit', edit_lector_path(lector) %></td>
-        <td><%= link_to 'Destroy', lector, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+        <td><%= lection.id %></td>
+        <td><%= link_to lection.lector_id, lector_url(lection.lector_id) %></td>
+        <td><%= link_to lection.group_id, group_url(lection.group_id)  %></td>
+        <td><%= lection.lection_time %></td>
+        <td><%= lection.lection_num %></td>
+        <td><%= link_to 'Show', lection %></td>
+        <td><%= link_to 'Edit', edit_lection_path(lection) %></td>
+        <td><%= link_to 'Destroy', lection, method: :delete, data: {confirm: 'Are you sure?'} %></td>
       </tr>
   <% end %>
   </tbody>
