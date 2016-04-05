@@ -1,24 +1,31 @@
 <h1>Lection List</h1>
-<%= link_to 'New', new_lection_path %>
-<table class="table table-hover">
-  <thead>
+<div class="tablecontent">
+  <%= link_to raw('<span class="glyphicon  glyphicon-plus" ></span> New'),  new_lection_path, class: "btn btn-sm btn-info btn-lg" %>
+  </br><br>
+  <table id="datatable" class="table table-hover table-bordered">
+    <thead>
+    <th>Actions</th>
     <th>id</th>
-    <th>teaches_since</th>
+    <th>lector_id</th>
+    <th>group_id</th>
+    <th>lection_time</th>
+    <th>theme</th>
   </thead>
   <tbody>
   <% @lections.each do |lection|%>
       <tr>
+        <td width="12%">
+          <%= link_to raw('<span class="glyphicon glyphicon-edit" ></span> Edit'), edit_lection_path(lection) %>
+          <%= link_to raw('<span class="glyphicon glyphicon-remove" ></span> Delete'), lection, method: :delete %>
+        </td>
         <td><%= lection.id %></td>
         <td><%= link_to lection.lector_id, lector_url(lection.lector_id) %></td>
         <td><%= link_to lection.group_id, group_url(lection.group_id)  %></td>
         <td><%= lection.lection_time %></td>
         <td><%= lection.theme %></td>
-        <td><%= link_to 'Show', lection %></td>
-        <td><%= link_to 'Edit', edit_lection_path(lection) %></td>
-        <td><%= link_to 'Destroy', lection, method: :delete, data: {confirm: 'Are you sure?'} %></td>
-      </tr>
+        </tr>
   <% end %>
   </tbody>
 
 </table>
-
+</div>

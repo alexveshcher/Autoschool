@@ -1,7 +1,10 @@
 <h1>Vehicle List</h1>
-<%= link_to 'New', new_vehicle_path %>
-<table class="table table-hover">
-  <thead>
+<div class="tablecontent">
+  <%= link_to raw('<span class="glyphicon  glyphicon-plus" ></span> New'),  new_vehicle_path, class: "btn btn-sm btn-info btn-lg" %>
+  </br><br>
+  <table id="datatable" class="table table-hover table-bordered">
+    <thead>
+    <th>Actions</th>
     <th>id</th>
     <th>vehicle_num</th>
     <th>model</th>
@@ -10,16 +13,17 @@
   <tbody>
   <% @vehicles.each do |vehicle|%>
       <tr>
+        <td width="12%">
+          <%= link_to raw('<span class="glyphicon glyphicon-edit" ></span> Edit'), edit_vehicle_path(vehicle) %>
+          <%= link_to raw('<span class="glyphicon glyphicon-remove" ></span> Delete'), vehicle, method: :delete %>
+        </td>
         <td><%= vehicle.id %></td>
         <td><%= vehicle.vehicle_num %></td>
         <td><%= vehicle.model %></td>
         <td><%= vehicle.category %></td>
-        <td><%= link_to 'Show', vehicle %></td>
-        <td><%= link_to 'Edit', edit_vehicle_path(vehicle) %></td>
-        <td><%= link_to 'Destroy', vehicle, method: :delete, data: {confirm: 'Are you sure?'} %></td>
-      </tr>
+        </tr>
   <% end %>
   </tbody>
 
 </table>
-
+</div>
