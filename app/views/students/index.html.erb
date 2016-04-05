@@ -1,28 +1,44 @@
 <h1>Student List</h1>
-<%= link_to 'New', new_student_path %>
-<table class="table table-hover">
+<div class="tablecontent">
+  <%= link_to raw('<span class="glyphicon  glyphicon-plus" ></span> New'),  new_student_path, class: "btn btn-sm btn-info btn-lg" %>
+  </br><br>
+<table id="datatable" class="table table-hover table-bordered">
   <thead>
+    <th>Actions</th>
     <th>id</th>
     <th>group_id</th>
+    <th>firstname</th>
+    <th>lastname</th>
+    <th>patronymic</th>
+    <th>born</th>
+    <th>reg_date</th>
+    <th>phone</th>
+    <th>category</th>
+    <th>passed_school</th>
+    <th>passed_mreo</th>
   </thead>
   <tbody>
   <% @students.each do |student|%>
       <tr>
+        <td width="12%">
+          <%= link_to raw('<span class="glyphicon glyphicon-edit" ></span> Edit'), edit_student_path(student) %>
+          <%= link_to raw('<span class="glyphicon glyphicon-remove" ></span> Delete'), student, method: :delete %>
+        </td>
         <td><%= student.id %></td>
         <td><%= link_to student.group_id, group_path(student.group_id) %></td>
         <td><%= student.lastname %></td>
         <td><%= student.firstname %></td>
-        <td><%= student.fathersname %></td>
+        <td><%= student.patronymic %></td>
         <td><%= student.born %></td>
         <td><%= student.reg_date %></td>
         <td><%= student.phone %></td>
         <td><%= student.category %></td>
-        <td><%= link_to 'Show', student %></td>
-        <td><%= link_to 'Edit', edit_student_path(student) %></td>
-        <td><%= link_to 'Destroy', student, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+        <td><%= student.passed_school %></td>
+        <td><%= student.passed_mreo %></td>
       </tr>
   <% end %>
   </tbody>
 
 </table>
 
+  </div>
