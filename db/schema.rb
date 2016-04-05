@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20160324164740) do
 
   create_table "groups", force: :cascade do |t|
     t.date "starttime", null: false
@@ -29,15 +29,15 @@ ActiveRecord::Schema.define(version: 0) do
 
   add_index "instructorvehicle", ["id_vehicle"], name: "instructorvehicle_ibfk_2", using: :btree
 
-  create_table "lection", force: :cascade do |t|
+  create_table "lections", force: :cascade do |t|
     t.datetime "lection_time",            null: false
     t.string   "theme",        limit: 40, null: false
     t.integer  "lector_id",    limit: 4
     t.integer  "group_id",     limit: 4
   end
 
-  add_index "lection", ["group_id"], name: "lection_ibfk_2", using: :btree
-  add_index "lection", ["lector_id"], name: "lection_ibfk_1", using: :btree
+  add_index "lections", ["group_id"], name: "lection_ibfk_2", using: :btree
+  add_index "lections", ["lector_id"], name: "lection_ibfk_1", using: :btree
 
   create_table "lectors", force: :cascade do |t|
     t.integer "teaches_since", limit: 4, null: false
@@ -91,8 +91,8 @@ ActiveRecord::Schema.define(version: 0) do
   add_foreign_key "instructors", "workers", column: "id", name: "instructors_ibfk_1"
   add_foreign_key "instructorvehicle", "instructors", column: "id_instructor", name: "instructorvehicle_ibfk_1"
   add_foreign_key "instructorvehicle", "vehicles", column: "id_vehicle", name: "instructorvehicle_ibfk_2"
-  add_foreign_key "lection", "groups", name: "lection_ibfk_2"
-  add_foreign_key "lection", "lectors", name: "lection_ibfk_1"
+  add_foreign_key "lections", "groups", name: "lections_ibfk_2"
+  add_foreign_key "lections", "lectors", name: "lections_ibfk_1"
   add_foreign_key "lectors", "workers", column: "id", name: "lectrors_ibfk_1"
   add_foreign_key "students", "groups", name: "group_id___fk"
   add_foreign_key "trainings", "instructors", name: "trainings_ibfk_1"

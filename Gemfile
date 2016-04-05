@@ -31,6 +31,7 @@ gem 'bootstrap-sass', '~> 3.3.6'
 
 gem 'jquery-datatables-rails'
 
+gem 'devise'
 
 
 # Use ActiveModel has_secure_password
