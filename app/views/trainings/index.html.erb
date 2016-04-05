@@ -1,26 +1,38 @@
-<h1>Student List</h1>
-<%= link_to 'New', new_training_path %>
-<table class="table table-hover">
+<h1>Training List</h1>
+<div class="tablecontent">
+  <%= link_to raw('<span class="glyphicon  glyphicon-plus" ></span> New'),  new_training_path, class: "btn btn-sm btn-info btn-lg" %>
+  </br><br>
+<table id="datatable" class="table table-hover table-bordered">
   <thead>
+    <th>Actions</th>
     <th>id</th>
-    <th>group_id</th>
+    <th>instructor_id</th>
+    <th>vehicle_id</th>
+    <th>student_id</th>
+    <th>training_time</th>
+    <th>duration</th>
+    <th>mark</th>
+    <th>pertol_usage</th>
   </thead>
   <tbody>
   <% @trainings.each do |training|%>
       <tr>
+        <td width="12%">
+          <%= link_to raw('<span class="glyphicon glyphicon-edit" ></span> Edit'), edit_training_path(training) %>
+          <%= link_to raw('<span class="glyphicon glyphicon-remove" ></span> Delete'), training, method: :delete %>
+        </td>
         <td><%= training.id %></td>
         <td><%= link_to training.instructor_id, instructor_path(training.instructor_id) %></td>
         <td><%= link_to training.vehicle_id, vehicle_path(training.vehicle_id) %></td>
         <td><%= link_to training.student_id, student_path(training.student_id) %></td>
+        <td><%= training.training_time %></td>
         <td><%= training.duration %></td>
         <td><%= training.mark %></td>
         <td><%= training.petrol_usage %></td>
-        <td><%= link_to 'Show', training %></td>
-        <td><%= link_to 'Edit', edit_training_path(training) %></td>
-        <td><%= link_to 'Destroy', training, method: :delete, data: {confirm: 'Are you sure?'} %></td>
       </tr>
   <% end %>
   </tbody>
 
 </table>
 
+  </div>
