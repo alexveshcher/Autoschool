@@ -1,8 +1,10 @@
 <h1>Worker List</h1>
 <div class="tablecontent">
-  <%= link_to 'New', new_worker_path %>
+  <%= link_to raw('<span class="glyphicon  glyphicon-plus" ></span> New'),  new_worker_path, class: "btn btn-sm btn-info btn-lg" %>
+  </br><br>
   <table id="datatable" class="table table-hover table-bordered">
     <thead>
+    <th>Actions</th>
     <th>id</th>
     <th>lastname</th>
     <th>firstname</th>
@@ -13,19 +15,22 @@
     <tbody>
     <% @workers.each do |worker| %>
         <tr>
+          <td width="12%">
+            <%= link_to raw('<span class="glyphicon glyphicon-edit" ></span> Edit'), edit_worker_path(worker) %>
+            <%= link_to raw('<span class="glyphicon glyphicon-remove" ></span> Delete'), worker, method: :delete %>
+          </td>
           <td><%= worker.id %></td>
           <td><%= worker.lastname %></td>
           <td><%= worker.firstname %></td>
           <td><%= worker.patronymic %></td>
           <td><%= worker.phone %></td>
           <td><%= worker.born %></td>
-          <!--<td><%= link_to 'Show', worker %></td>
-        <td><%= link_to 'Edit', edit_worker_path(worker) %></td>
-        <td><%= link_to 'Destroy', worker, method: :delete, data: {confirm: 'Are you sure?'} %></td>-->
         </tr>
     <% end %>
+
     </tbody>
 
   </table>
 
 </div>
+

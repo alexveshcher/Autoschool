@@ -20,5 +20,6 @@
 
 $(document).ready(function() {
     $('#datatable').DataTable({
+        dom: 't<plf>'
     });
 } );
