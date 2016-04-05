@@ -1,22 +1,27 @@
 <h1>Lector List</h1>
-<%= link_to 'New', new_lector_path %>
-<table class="table table-hover">
-  <thead>
+<div class="tablecontent">
+  <%= link_to raw('<span class="glyphicon  glyphicon-plus" ></span> New'), new_lector_path, class: "btn btn-sm btn-info btn-lg" %>
+  <br><br>
+  <table id="datatable" class="table table-hover table-bordered">
+    <thead>
+    <th>Actions</th>
     <th>id</th>
     <th>teaches_since</th>
-  </thead>
-  <tbody>
-  <% @lectors.each do |lector|%>
-      <tr>
-        <td><%= lector.id %></td>
-        <td><%= lector.teaches_since %></td>
-        <td><%= lector.worker.lastname%></td>
-        <td><%= link_to 'Show', lector %></td>
-        <td><%= link_to 'Edit', edit_lector_path(lector) %></td>
-        <td><%= link_to 'Destroy', lector, method: :delete, data: {confirm: 'Are you sure?'} %></td>
-      </tr>
-  <% end %>
-  </tbody>
+    <th>lastname</th>
+    </thead>
+    <tbody>
+    <% @lectors.each do |lector| %>
+        <tr>
+          <td width="12%">
+            <%= link_to raw('<span class="glyphicon glyphicon-edit" ></span> Edit'), edit_lector_path(lector) %>
+            <%= link_to raw('<span class="glyphicon glyphicon-remove" ></span> Delete'), lector, method: :delete %>
+          </td>
+          <td><%= lector.id %></td>
+          <td><%= lector.teaches_since %></td>
+          <td><%= lector.worker.lastname %></td>
+        </tr>
+    <% end %>
+    </tbody>
 
-</table>
-
+  </table>
+</div>

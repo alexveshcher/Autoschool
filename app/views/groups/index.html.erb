@@ -3,17 +3,19 @@
 <%= link_to 'New', new_group_path %>
 <table id="datatable" class="table table-hover table-bordered">
   <thead>
+    <th>Actions</th>
     <th>id</th>
     <th>Start Time</th>
   </thead>
   <tbody>
   <% @groups.each do |group|%>
       <tr>
+        <td width="12%">
+          <%= link_to raw('<span class="glyphicon glyphicon-edit" ></span> Edit'), edit_group_path(group) %>
+          <%= link_to raw('<span class="glyphicon glyphicon-remove" ></span> Delete'), group, method: :delete %>
+        </td>
         <td><%= group.id %></td>
         <td><%= group.starttime %></td>
-        <td><%= link_to 'Show', group %></td>
-        <td><%= link_to 'Edit', edit_group_path(group) %></td>
-        <td><%= link_to 'Destroy', group, method: :delete, data: {confirm: 'Are you sure?'} %></td>
       </tr>
   <% end %>
   </tbody>
