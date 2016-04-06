@@ -16,9 +16,17 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+//for #index
 .tablecontent {
   width: 90%;
   position:absolute;
   left:5%;
 
+}
+
+//for _form
+.content {
+  width: 60%;
+  position:absolute;
+  left:20%;
 }
