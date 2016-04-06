@@ -1,6 +1,5 @@
 <% if current_user %>
-    <!--<li><%= link_to 'Logged as '%></li>-->
-    <li><a>Logged as <%= current_user.email %></a></li>
+    <li><a><%= current_user.email + '    |  ' + current_user.role %></a></li>
     <!--<li><%= link_to 'Edit account', edit_user_registration_path %></li>-->
     <li><%= link_to 'Log out', destroy_user_session_path, :method => 'delete' %></li>
 <% else %>

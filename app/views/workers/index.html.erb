@@ -1,7 +1,9 @@
 <h1>Worker List</h1>
 <div class="tablecontent">
+  <% if can? :create, @worker  %>
   <%= link_to raw('<span class="glyphicon  glyphicon-plus" ></span> New'),  new_worker_path, class: "btn btn-sm btn-info btn-lg" %>
-  </br><br>
+  <% end  %>
+      <br><br>
   <table id="datatable" class="table table-hover table-bordered">
     <thead>
     <th>Actions</th>
