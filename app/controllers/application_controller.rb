@@ -4,9 +4,13 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :authenticate_user!
 
+
   #handling 'access denied error'
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_url, :alert => exception.message
   end
+
+  #If you want to be certain authorization is not forgotten in some controller action
+  #check_authorization :unless => :devise_controller? doesn't work as expected
 
 end

@@ -1,6 +1,6 @@
 class GroupsController < ApplicationController
+  load_and_authorize_resource
   before_action :set_group, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
 
   def index
     @groups = Group.get_all

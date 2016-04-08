@@ -30,9 +30,11 @@ class Ability
     # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
 
     if user.role == 'student'
-      can :read, ::Worker
+      can :read, ::Student
     elsif user.role == 'admin'
       can :manage, :all
+    elsif user.role == 'instructor'
+      can :manage, ::Training
     end
   end
 end
