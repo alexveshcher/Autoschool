@@ -85,14 +85,24 @@ CREATE TABLE trainings
   CONSTRAINT trainings_ibfk_3 FOREIGN KEY (student_id) REFERENCES students (id)
 );
 
-SELECT i.*, count(DISTINCT(students.passed_mreo))
+#top 3 instructors, that teach students who passes mreo exam
+SELECT i.*, count(DISTINCT(students.id))
 FROM trainings
   INNER JOIN instructors i ON trainings.instructor_id = i.id
   INNER JOIN students ON students.id = trainings.student_id
+WHERE students.passed_mreo = true
 GROUP BY i.id;
 
-SELECT lections.id
+#get lections of currently logged in student
+SELECT lections.*
 FROM lections
 INNER JOIN students
 ON students.group_id = lections.group_id
 WHERE students.id = 17;
+
+#get training of currently logged in instructor
+SELECT trainings.*
+FROM trainings
+INNER JOIN instructors ON trainings.instructor_id = instructors.id
+WHERE instructor_id = 17;
+

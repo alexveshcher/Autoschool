@@ -34,7 +34,10 @@ class InstructorsController < ApplicationController
 
     respond_to do |format|
       if @instructor.save
-        format.html { redirect_to @instructor, notice: 'Instructor was successfully created.' }
+        #creates new user with role='student', email and password are the same
+                User.create!(email: "instructor#{@instructor.id}@gmail.com",
+                                                   password: "instructor#{@instructor.id}@gmail.com", role: 'instructor', uid: @instructor.id)
+        #format.html { redirect_to @instructor, notice: 'Instructor was successfully created.' }
       else
         format.html { render :new }
       end
@@ -44,7 +47,7 @@ class InstructorsController < ApplicationController
   def update
     respond_to do |format|
       if @instructor.update(instructor_params) && @worker.update(worker_params)
-        format.html { redirect_to @instructor, notice: 'Instructor was successfully updated.' }
+        format.html { redirect_to @instructors, notice: 'Instructor was successfully updated.' }
       else
         format.html { render :edit }
       end

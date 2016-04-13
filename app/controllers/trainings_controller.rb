@@ -3,7 +3,12 @@ class TrainingsController < ApplicationController
   before_action :set_training, only: [:show, :edit, :update, :destroy]
 
   def index
-    @trainings = Training.all
+    if(current_user.role == 'instructor')
+            @trainings = Training.joins("INNER JOIN instructors
+                                         ON trainings.instructor_id = instructors.id
+                                         WHERE instructor_id =#{current_user.uid} ")
+      else @trainings = Training.all
+    end
   end
 
   def show
@@ -22,7 +27,7 @@ class TrainingsController < ApplicationController
 
     respond_to do |format|
       if @training.save
-        format.html { redirect_to @training, notice: 'Training was successfully created.' }
+        format.html { redirect_to trainings_url, notice: 'Training was successfully created.' }
         #format.json { render :show, status: :created, location: @training }
       else
         format.html { render :new }
@@ -34,7 +39,7 @@ class TrainingsController < ApplicationController
   def update
     respond_to do |format|
       if @training.update(training_params)
-        format.html { redirect_to @training, notice: 'Training was successfully updated.' }
+        format.html { redirect_to trainings_url, notice: 'Training was successfully updated.' }
         format.json { render :show, status: :ok, location: @training }
       else
         format.html { render :edit }

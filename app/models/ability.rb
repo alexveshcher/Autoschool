@@ -35,6 +35,7 @@ class Ability
       can :manage, :all
     elsif user.role == 'instructor'
       can :manage, ::Training
+      can :read, ::Vehicle
     end
   end
 end
