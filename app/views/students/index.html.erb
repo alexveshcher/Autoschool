@@ -25,7 +25,11 @@
           <%= link_to raw('<span class="glyphicon glyphicon-remove" ></span> Delete'), student, method: :delete %>
         </td>
         <td><%= student.id %></td>
-        <td><%= link_to student.group_id, group_path(student.group_id) %></td>
+        <td>
+          <% if !student.group_id.nil? %>
+          <%= link_to student.group_id, group_path(student.group_id) %>
+          <% end %>
+        </td>
         <td><%= student.lastname %></td>
         <td><%= student.firstname %></td>
         <td><%= student.patronymic %></td>

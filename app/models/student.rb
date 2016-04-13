@@ -1,7 +1,7 @@
 class Student < ActiveRecord::Base
 
   validates :phone, length: { is: 10 }
-  validates :firstname, :lastname, :fathersname, format: { with: /\A[a-zA-Z]+\z/,
+  validates :firstname, :lastname, :patronymic, format: { with: /\A[a-zA-Z]+\z/,
                                                            message: 'only allows letters' }
 
   def self.get_all

@@ -26,8 +26,8 @@
       </div>
 
       <div class="form-group">
-        <label>fathersname:</label>
-        <%= f.text_field :fathersname, class: 'form-control' %>
+        <label>patronymic:</label>
+        <%= f.text_field :patronymic, class: 'form-control' %>
       </div>
       <div class="form-group">
         <label>born:</label>
@@ -51,6 +51,15 @@
         %>
       </div>
 
+      <div class="form-group">
+        <label>passed_school:</label>
+
+        <%= f.check_box :passed_school, {checked: false }, "\x01",  false%>
+      </div>
+      <div class="form-group">
+        <label>passed_mreo:</label>
+        <%= f.check_box :passed_mreo, {checked: false }, "\x01",  false %>
+      </div>
 
 
 

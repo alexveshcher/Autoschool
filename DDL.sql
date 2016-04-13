@@ -84,3 +84,9 @@ CREATE TABLE trainings
   CONSTRAINT trainings_ibfk_2 FOREIGN KEY (vehicle_id) REFERENCES vehicles (id),
   CONSTRAINT trainings_ibfk_3 FOREIGN KEY (student_id) REFERENCES students (id)
 );
+
+SELECT i.*, count(DISTINCT(students.passed_mreo))
+FROM trainings
+  INNER JOIN instructors i ON trainings.instructor_id = i.id
+  INNER JOIN students ON students.id = trainings.student_id
+GROUP BY i.id
