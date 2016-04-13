@@ -1,4 +1,5 @@
 class Student < ActiveRecord::Base
+  belongs_to :group
 
   validates :phone, length: { is: 10 }
   validates :firstname, :lastname, :patronymic, format: { with: /\A[a-zA-Z]+\z/,

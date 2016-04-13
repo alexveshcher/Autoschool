@@ -89,4 +89,10 @@ SELECT i.*, count(DISTINCT(students.passed_mreo))
 FROM trainings
   INNER JOIN instructors i ON trainings.instructor_id = i.id
   INNER JOIN students ON students.id = trainings.student_id
-GROUP BY i.id
+GROUP BY i.id;
+
+SELECT lections.id
+FROM lections
+INNER JOIN students
+ON students.group_id = lections.group_id
+WHERE students.id = 17;

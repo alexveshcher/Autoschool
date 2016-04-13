@@ -3,7 +3,13 @@ class LectionsController < ApplicationController
   before_action :set_lection, only: [:show, :edit, :update, :destroy]
 
   def index
-    @lections = Lection.all
+    if(current_user.role == 'student')
+      @lections = Lection.joins("INNER JOIN students
+ON students.group_id = lections.group_id WHERE students.id =#{current_user.uid} ")
+
+    else @lections = Lection.all
+    end
+
   end
 
   def show

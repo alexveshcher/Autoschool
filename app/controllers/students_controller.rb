@@ -23,6 +23,9 @@ class StudentsController < ApplicationController
     respond_to do |format|
       if @student.save
         format.html { redirect_to @student, notice: 'Student was successfully created.' }
+        #creates new user with role='student', email and password are the same
+        User.create!(email: "student#{@student.id}@gmail.com",
+                     password: "student#{@student.id}@gmail.com", role: 'student', uid: @student.id)
         #format.json { render :show, status: :created, location: @student }
       else
         format.html { render :new }

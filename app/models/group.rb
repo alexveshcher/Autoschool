@@ -1,4 +1,6 @@
 class Group < ActiveRecord::Base
+  has_many :students
+  has_many :lections
 
   def self.get_all
     self.find_by_sql('SELECT * FROM groups')
