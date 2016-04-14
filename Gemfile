@@ -26,6 +26,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 #for importing data from DB
 gem 'yaml_db'
 
+#fox xlsx
+gem 'axlsx_rails'
+
+
 
 gem 'bootstrap-sass', '~> 3.3.6'
 

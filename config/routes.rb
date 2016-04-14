@@ -6,7 +6,11 @@ Rails.application.routes.draw do
   resources :lectors
   resources :vehicles
   resources :lections
-  resources :instructors
+  resources :instructors do
+    collection do
+      get 'export'
+    end
+  end
   resources :trainings
 
   root 'static_pages#home'

@@ -28,14 +28,14 @@ class Ability
     #
     # See the wiki for details:
     # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
-
-    if user.role == 'student'
+    if user.nil?
+    elsif user.role == 'student'
       can :read, ::Lection
     elsif user.role == 'admin'
       can :manage, :all
     elsif user.role == 'instructor'
       can :manage, ::Training
-      can :read, ::Vehicle
+      can :read, [::Vehicle, ::Student]
     end
   end
 end

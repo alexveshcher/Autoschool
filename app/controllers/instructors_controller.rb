@@ -2,9 +2,21 @@ class InstructorsController < ApplicationController
   load_and_authorize_resource
   before_action :set_instructor, only: [:show, :edit, :update, :destroy]
 
+  def export
+    @instructors = Instructor.top3
+    respond_to do |format|
+      format.html
+      format.xlsx {render 'instructors/download'}
+    end
+  end
+
 
   def index
     @instructors = Instructor.all
+       respond_to do |format|
+          format.html
+          format.xlsx {render 'instructors/download'}
+          end
   end
 
   def show

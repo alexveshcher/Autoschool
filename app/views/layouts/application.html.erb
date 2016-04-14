@@ -7,11 +7,15 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+
   <%= render 'layouts/header' %>
+  <div class="wrapper">
   <%= render partial: "shared/flash_messages", flash: flash %>
 
 
+
   <%= yield %>
+  </div>
 
 </body>
 </html>

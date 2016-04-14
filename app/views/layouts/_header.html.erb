@@ -4,10 +4,14 @@
       <%= link_to 'Home', root_path, class: 'navbar-brand' %>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
-      <li><a href="#">Page 1</a></li>
-      <li><a href="#">Page 2</a></li>
-      <li><a href="#">Page 3</a></li>
+      <li><%=if can? :read, Student then link_to 'Students', students_path end %></li>
+      <li><%=if can? :read, Worker then  link_to 'Workers', workers_path  end%></li>
+      <li><%=if can? :read, Instructor then  link_to 'Instructors', instructors_path  end%></li>
+      <li><%=if can? :read, Lector then  link_to 'Lectors', lectors_path  end %></li>
+      <li><%=if can? :read, Lection then  link_to 'Lections', lections_path  end%></li>
+      <li><%=if can? :read, Group then  link_to 'Groups', groups_path  end %></li>
+      <li><%=if can? :read, Vehicle then  link_to 'Vehicles', vehicles_path  end%></li>
+      <li><%=if can? :read, Training then  link_to 'Trainings', trainings_path  end%></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <%= render 'layouts/nav_links_for_auth' %>
