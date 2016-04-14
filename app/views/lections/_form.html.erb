@@ -20,17 +20,17 @@
       </div>
 
       <div class="form-group">
-        <label>group_id:</label>
+        <label>Group:</label>
         <%= f.collection_select :group_id, Group.all,:id,:id, include_blank: true %>
       </div>
 
       <div class="form-group">
-        <label>lection_time:</label>
+        <label>Lection Time:</label>
         <%= f.datetime_select :lection_time, class: 'form-control' %>
       </div>
 
       <div class="form-group">
-        <label>theme:</label>
+        <label>Theme:</label>
         <%= f.text_field :theme %>
       </div>
 

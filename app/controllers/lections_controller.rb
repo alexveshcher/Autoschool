@@ -28,7 +28,7 @@ ON students.group_id = lections.group_id WHERE students.id =#{current_user.uid} 
 
     respond_to do |format|
       if @lection.save
-        format.html { redirect_to @lection, notice: 'Lection was successfully created.' }
+        format.html { redirect_to lections_path, notice: 'Lection was successfully created.' }
         #format.json { render :show, status: :created, location: @lection }
       else
         format.html { render :new }
@@ -40,7 +40,7 @@ ON students.group_id = lections.group_id WHERE students.id =#{current_user.uid} 
   def update
     respond_to do |format|
       if @lection.update(lection_params)
-        format.html { redirect_to @lection, notice: 'Lection was successfully updated.' }
+        format.html { redirect_to lections_path, notice: 'Lection was successfully updated.' }
         format.json { render :show, status: :ok, location: @lection }
       else
         format.html { render :edit }

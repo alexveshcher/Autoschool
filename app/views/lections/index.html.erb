@@ -6,10 +6,11 @@
     <thead>
     <th>Actions</th>
     <th>id</th>
-    <th>lector_id</th>
-    <th>group_id</th>
-    <th>lection_time</th>
-    <th>theme</th>
+    <th>Lector id</th>
+    <th>Lector</th>
+    <th>Group id</th>
+    <th>Lection time</th>
+    <th>Theme</th>
   </thead>
   <tbody>
   <% @lections.each do |lection|%>
@@ -20,6 +21,7 @@
         </td>
         <td><%= lection.id %></td>
         <td><%= link_to lection.lector_id, lector_url(lection.lector_id) %></td>
+        <td><%=" #{lection.lector.worker.lastname}  #{lection.lector.worker.firstname} "%></td>
         <td><%= link_to lection.group_id, group_url(lection.group_id)  %></td>
         <td><%= lection.lection_time %></td>
         <td><%= lection.theme %></td>
