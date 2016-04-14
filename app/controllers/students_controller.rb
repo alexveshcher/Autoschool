@@ -47,6 +47,10 @@ class StudentsController < ApplicationController
   end
 
   def destroy
+    #destroy users related to instructor
+    if !(User.find_by(uid: @student.id, role: 'student').nil?)
+      User.find_by(uid: @student.id, role: 'student').destroy
+    end
     @student.destroy
     respond_to do |format|
       format.html { redirect_to students_url, notice: 'Student was successfully destroyed.' }

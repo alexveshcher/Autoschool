@@ -49,7 +49,7 @@ class InstructorsController < ApplicationController
         #creates new user with role='student', email and password are the same
                 User.create!(email: "instructor#{@instructor.id}@gmail.com",
                                                    password: "instructor#{@instructor.id}@gmail.com", role: 'instructor', uid: @instructor.id)
-        #format.html { redirect_to @instructor, notice: 'Instructor was successfully created.' }
+        format.html { redirect_to instructors_path, notice: 'Instructor was successfully created.' }
       else
         format.html { render :new }
       end
@@ -59,7 +59,7 @@ class InstructorsController < ApplicationController
   def update
     respond_to do |format|
       if @instructor.update(instructor_params) && @worker.update(worker_params)
-        format.html { redirect_to @instructors, notice: 'Instructor was successfully updated.' }
+        format.html { redirect_to instructors_path, notice: 'Instructor was successfully updated.' }
       else
         format.html { render :edit }
       end
@@ -67,11 +67,31 @@ class InstructorsController < ApplicationController
   end
 
   def destroy
+    begin
+      ActiveRecord::Base.transaction do
+        if !(User.find_by(uid: @instructor.id, role: 'instructor').nil?)
+          User.find_by(uid: @instructor.id, role: 'instructor').destroy
+        end
+        @instructor.destroy
+        @worker.destroy
+      end
+      respond_to do |format|
+        format.html { redirect_to instructors_url, notice: 'Instructor was successfully destroyed.' }
+        end
+    rescue => e
+        redirect_to instructors_path, alert: "#{e}  You cant delete instructor when he has trainings."
+        # something went wrong, transaction rolled back
+      end
+    #destroy users related to instructor
+=begin
+    if !(User.find_by(uid: @instructor.id, role: 'instructor').nil?)
+        User.find_by(uid: @instructor.id, role: 'instructor').destroy
+    end
     @instructor.destroy
     @worker.destroy
-    respond_to do |format|
-      format.html { redirect_to instructors_url, notice: 'Instructor was successfully destroyed.' }
-    end
+=end
+
+
   end
 
   private

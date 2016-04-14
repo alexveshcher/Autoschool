@@ -44,11 +44,16 @@ class GroupsController < ApplicationController
   end
 
   def destroy
-    @group.destroy
-    respond_to do |format|
-      format.html { redirect_to groups_url, notice: 'Group was successfully destroyed.' }
-      #format.json { head :no_content }
+    begin
+      @group.destroy
+      respond_to do |format|
+        format.html { redirect_to groups_url, notice: 'Group was successfully destroyed.' }
+      end
+    rescue => e
+      redirect_to groups_path, alert: 'You cant delete group when it has students yet.'
     end
+
+
   end
 
   private
